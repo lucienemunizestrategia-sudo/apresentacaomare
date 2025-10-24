@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prospera Rio - Maré | Apresentação de Resultados</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #EFF1F3;
+            color: #021738;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #092040 0%, #021738 100%);
+            color: #FFFFFF;
+            padding: 50px 40px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 300px;
+            height: auto;
+        }
+        
+        .location-text {
+            color: #ECC203;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            margin-top: 15px;
+            letter-spacing: 2px;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 44px;
+            margin-top: 25px;
+            color: #FFFFFF;
+        }
+        
+        .subtitle {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            margin-top: 15px;
+            opacity: 0.95;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #00B7D7, #092040);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            color: #FFFFFF;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .metric-card .number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #ECC203;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        
+        .metric-card .label {
+            font-size: 16px;
+            line-height: 1.4;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #092040;
+            margin: 40px 0 25px 0;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #00B7D7;
+        }
+        
+        .info-box {
+            background: #FFFFFF;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        
+        .info-box h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            color: #092040;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 3px solid #00B7D7;
+            padding-bottom: 10px;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #FFFFFF;
+        }
+        
+        th {
+            background: #092040;
+            color: #FFFFFF;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            padding: 15px;
+            text-align: left;
+            font-size: 16px;
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 2px solid #EFF1F3;
+            font-size: 16px;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        .badge-success {
+            background: #4CAF50;
+            color: #FFFFFF;
+        }
+        
+        .badge-warning {
+            background: #ECC203;
+            color: #021738;
+        }
+        
+        .badge-danger {
+            background: #f44336;
+            color: #FFFFFF;
+        }
+        
+        .alert {
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 6px solid;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            border-color: #4CAF50;
+            color: #155724;
+        }
+        
+        .alert-warning {
+            background: #fff3cd;
+            border-color: #ECC203;
+            color: #856404;
+        }
+        
+        .alert-danger {
+            background: #f8d7da;
+            border-color: #f44336;
+            color: #721c24;
+        }
+        
+        .alert h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        ul li {
+            padding: 6px 0 6px 25px;
+            position: relative;
+            line-height: 1.5;
+            font-size: 16px;
+        }
+        
+        ul li:before {
+            content: "▪";
+            color: #00B7D7;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 24px;
+        }
+        
+        .highlight-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            color: #00B7D7;
+            font-weight: 700;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="https://lh3.googleusercontent.com/d/1x5sNkC9vd7CI78y0xdkWvgoadxPEMcIf=w800" alt="Prospera Rio" class="logo">
+                <div class="location-text">MARÉ</div>
+            </div>
+            <h1>APRESENTAÇÃO DE RESULTADOS</h1>
+            <p class="subtitle">Análise Consolidada de Indicadores e Impactos | Outubro 2025</p>
+        </div>
+
+        <h2 class="section-title">VISÃO GERAL DOS INDICADORES</h2>
+        
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="number">529</div>
+                <div class="label">Questionários Aplicados<br>(Meta: 500 | 105,8%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">1</div>
+                <div class="label">Relatório de Diagnóstico<br>(Meta: 1 | 100%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">1</div>
+                <div class="label">Guia de Acessibilidade<br>(Meta: 1 | 100%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">1</div>
+                <div class="label">Material Pedagógico<br>(Meta: 1 | 100%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">0</div>
+                <div class="label">Cópias Físicas Impressas<br>(Meta: 100 | 0%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">2</div>
+                <div class="label">Seminários Realizados<br>(Meta: 2 | 0%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">203</div>
+                <div class="label">Participantes Seminários<br>(Meta: 500 | 40,6%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">16</div>
+                <div class="label">Oficinas Realizadas<br>(Meta: 16 | 100%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">94</div>
+                <div class="label">Empreendedores nas Oficinas<br>(Meta: 50 | 188%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">5</div>
+                <div class="label">Palestras Realizadas<br>(Meta: 2 | 250%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">49</div>
+                <div class="label">Empreendedores nas Palestras<br>(Meta: 50 | 98%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">84</div>
+                <div class="label">Diagnósticos Empresariais<br>(Meta: 50 | 168%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">84</div>
+                <div class="label">Relatórios Individuais<br>(Meta: 50 | 168%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">526h</div>
+                <div class="label">Consultorias Realizadas<br>(Meta: 600h | 87,67%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">0</div>
+                <div class="label">Feiras de Negócios<br>(Meta: 2 | 0%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">0</div>
+                <div class="label">Empreendedores nas Feiras<br>(Meta: 50 | 0%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">12</div>
+                <div class="label">Visitas Técnicas<br>(Meta: 12 | 100%)</div>
+            </div>
+            <div class="metric-card">
+                <div class="number">20</div>
+                <div class="label">Reuniões com Sebrae<br>(Meta: 12 | 166,67%)</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">DETALHAMENTO DE OFICINAS TÉCNICAS</h2>
+        
+        <div class="info-box">
+            <h3>Oficinas Técnicas Realizadas - MARÉ (16 oficinas | 94 participantes)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Oficina</th>
+                        <th style="text-align: center;">Participantes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>09/05</td>
+                        <td>Descomplicando seu negócio</td>
+                        <td style="text-align: center;"><span class="highlight-number">10</span></td>
+                    </tr>
+                    <tr>
+                        <td>16/05</td>
+                        <td>Descomplicando seu negócio</td>
+                        <td style="text-align: center;"><span class="highlight-number">5</span></td>
+                    </tr>
+                    <tr>
+                        <td>29/05</td>
+                        <td>Lucro Rápido</td>
+                        <td style="text-align: center;"><span class="highlight-number">11</span></td>
+                    </tr>
+                    <tr>
+                        <td>03/06</td>
+                        <td>Lucro Escondido</td>
+                        <td style="text-align: center;"><span class="highlight-number">9</span></td>
+                    </tr>
+                    <tr>
+                        <td>01/07</td>
+                        <td>Precificação</td>
+                        <td style="text-align: center;"><span class="highlight-number">6</span></td>
+                    </tr>
+                    <tr>
+                        <td>08/07</td>
+                        <td>Precificação</td>
+                        <td style="text-align: center;"><span class="highlight-number">9</span></td>
+                    </tr>
+                    <tr>
+                        <td>15/07</td>
+                        <td>Precificação</td>
+                        <td style="text-align: center;"><span class="highlight-number">5</span></td>
+                    </tr>
+                    <tr>
+                        <td>17/07</td>
+                        <td>Modelo de Negócio</td>
+                        <td style="text-align: center;"><span class="highlight-number">4</span></td>
+                    </tr>
+                    <tr>
+                        <td>18/07</td>
+                        <td>Marketing Digital</td>
+                        <td style="text-align: center;"><span class="highlight-number">3</span></td>
+                    </tr>
+                    <tr>
+                        <td>21/07</td>
+                        <td>Modelo de Negócio</td>
+                        <td style="text-align: center;"><span class="highlight-number">2</span></td>
+                    </tr>
+                    <tr>
+                        <td>22/07</td>
+                        <td>Finanças Descomplicadas</td>
+                        <td style="text-align: center;"><span class="highlight-number">5</span></td>
+                    </tr>
+                    <tr>
+                        <td>24/07</td>
+                        <td>Finanças Descomplicadas</td>
+                        <td style="text-align: center;"><span class="highlight-number">7</span></td>
+                    </tr>
+                    <tr>
+                        <td>31/07</td>
+                        <td>Identidade De Marca</td>
+                        <td style="text-align: center;"><span class="highlight-number">6</span></td>
+                    </tr>
+                    <tr>
+                        <td>01/08</td>
+                        <td>Marketing Digital</td>
+                        <td style="text-align: center;"><span class="highlight-number">3</span></td>
+                    </tr>
+                    <tr>
+                        <td>07/08</td>
+                        <td>Identidade De Marca</td>
+                        <td style="text-align: center;"><span class="highlight-number">6</span></td>
+                    </tr>
+                    <tr>
+                        <td>21/07</td>
+                        <td>Modelo de Negócio</td>
+                        <td style="text-align: center;"><span class="highlight-number">3</span></td>
+                  </tr>
+                    <tr>
+                        <td>08/09</td>
+                        <td>Controle de Estoque</td>
+                        <td style="text-align: center;"><span class="highlight-number">3</span></td>
+                    </tr>
+                    <tr style="background: #092040; color: #FFFFFF; font-weight: 700;">
+                        <td colspan="2"><strong>TOTAL DE PARTICIPANTES</strong></td>
+                        <td style="text-align: center;"><strong>94</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-title">DETALHAMENTO DE PALESTRAS</h2>
+        
+        <div class="info-box">
+            <h3>Palestras Realizadas - MARÉ (5 palestras | 49 participantes)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Palestra</th>
+                        <th style="text-align: center;">Participantes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>05/08</td>
+                        <td>Fala que vende</td>
+                        <td style="text-align: center;"><span class="highlight-number">9</span></td>
+                    </tr>
+                    <tr>
+                        <td>21/08</td>
+                        <td>Fluxo de Caixa</td>
+                        <td style="text-align: center;"><span class="highlight-number">5</span></td>
+                    </tr>
+                    <tr>
+                        <td>01/09</td>
+                        <td>Café Empreendedor</td>
+                        <td style="text-align: center;"><span class="highlight-number">20</span></td>
+                    </tr>
+                    <tr>
+                        <td>04/09</td>
+                        <td>Whatsapp Business com ChatGPT 1.0</td>
+                        <td style="text-align: center;"><span class="highlight-number">6</span></td>
+                    </tr>
+                    <tr>
+                        <td>11/09</td>
+                        <td>Whatsapp Business com ChatGPT 2.0</td>
+                        <td style="text-align: center;"><span class="highlight-number">6</span></td>
+                   
+                    </tr>
+                    <tr style="background: #092040; color: #FFFFFF; font-weight: 700;">
+                        <td colspan="2"><strong>TOTAL DE PARTICIPANTES</strong></td>
+                        <td style="text-align: center;"><strong>49</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-title">PONTOS FORTES</h2>        
+        <div class="alert alert-success">
+            <h4>Metas Superadas e Concluídas</h4>
+            <ul>
+                <li><strong>Mapeamento:</strong> 529 questionários aplicados (105,8% da meta)</li>
+                <li><strong>Diagnósticos:</strong> 84 diagnósticos empresariais realizados (168% da meta)</li>
+                <li><strong>Relatórios:</strong> 84 relatórios individuais produzidos (168% da meta)</li>
+                <li><strong>Oficinas:</strong> 16 oficinas realizadas com 94 participantes (188% da meta)</li>
+                <li><strong>Palestras:</strong> 5 palestras realizadas com 49 participantes (98% da meta)</li>
+                <li><strong>Consultorias:</strong> 526 horas realizadas (87,67% da meta de 600h)</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">SEMINÁRIOS REALIZADOS</h2>
+
+        <div class="info-box">
+            <h3>Seminários de Formação - MARÉ (203 participantes)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Local/Evento</th>
+                        <th style="text-align: center;">Data</th>
+                        <th style="text-align: center;">Participantes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>EE João Borges</strong></td>
+                        <td style="text-align: center;">27/08/2025</td>
+                        <td style="text-align: center;"><span class="highlight-number">203</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="section-title">DESAFIOS E AÇÕES NECESSÁRIAS</h2>
+        
+        <div class="alert alert-danger">
+            <h4>Áreas Críticas - Atenção Prioritária</h4>
+            <ul>
+                <li><strong>Seminários:</strong> Déficit de 297 participantes (apenas 40,6% da meta alcançada)</li>
+                <li><strong>Eventos Pendentes:</strong> Bahia e César Perneta (datas a definir)</li>
+                <li><strong>Consultorias:</strong> Faltam 74 horas para completar 600h (12,3%)</li>
+                <li><strong>Feiras de Negócios:</strong> Nenhuma feira realizada (0% da meta) - URGENTE</li>
+                <li><strong>Impressão:</strong> 100 cópias físicas pendentes</li>
+                </ul>
+        </div>
+
+        <div class="alert alert-warning">
+            <h4>Recomendações Imediatas</h4>
+            <ul>
+                <li>Realizar eventos pendentes: Bahia e César Perneta</li>
+                <li>Planejar eventos adicionais para alcançar 500 participantes em seminários</li>
+                <li>Planejar e executar 2 feiras de negócios com urgência</li>
+                <li>Completar as 74 horas restantes de consultoria</li>
+                <li>Providenciar impressão das 100 cópias físicas dos materiais pedagógicos</li>
+                <li>Finalizar diagramação dos materiais (10% restantes)</li>
+                <li>Realizar registro audiovisual dos eventos</li>
+            </ul>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #092040, #00B7D7); color: #FFFFFF; padding: 40px; border-radius: 12px; margin-top: 40px; text-align: center;">
+            <p style="font-size: 22px; font-weight: 600; margin-bottom: 10px;">PROSPERA RIO - MARÉ</p>
+            <p style="font-size: 18px; opacity: 0.9;">Apresentação de Resultados | Outubro 2025</p>
+            <p style="font-size: 16px; opacity: 0.8; margin-top: 15px;">Déficit crítico: 297 participantes nos seminários | 2 feiras de negócios pendentes | 74h de consultorias restantes</p>
+        </div>
+    </div>
+</body>
+</html>
